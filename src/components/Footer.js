@@ -12,8 +12,8 @@ export default function Footer() {
       <p className="coder">
         <a href="https://github.com/basagan" target="_blank" rel="noreferrer">
           Open-sourse code
-        </a>
-        &nbsp; by Tatiana Ochirova
+        </a>{" "}
+        by Tatiana Ochirova
       </p>
     </footer>
   );
