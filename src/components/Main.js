@@ -16,7 +16,7 @@ export default function Main(props) {
       temperatureMin: response.data.main.temp_min,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: " ",
+      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       timeSunrise: new Date(response.data.sys.sunrise * 1000),
       timeSunset: new Date(response.data.sys.sunset * 1000),
       wind: response.data.wind.speed,

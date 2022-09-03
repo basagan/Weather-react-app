@@ -2,7 +2,6 @@ import React from "react";
 import FormatedDate from "./FormatedDate";
 import FormatedTime from "./FormatedTime";
 import "./weather.css";
-import sun from "./image/sun.jpg";
 
 export default function Weather(props) {
   return (
@@ -33,11 +32,11 @@ export default function Weather(props) {
                   </a>
                 </div>
                 <img
-                  src={sun}
+                  src={props.info.icon}
                   alt="Sun"
                   id="icon"
                   className="main-emoji img-fluid"
-                  width="50"
+                  width="80"
                 />
               </li>
               <li>
