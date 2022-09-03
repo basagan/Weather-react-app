@@ -11,7 +11,7 @@ export default function Weather(props) {
         <div className="row city justify-content-md-center">
           <div className="col-lg-6 city">
             <ul>
-              <li className="name">{props.defaultCity}</li>
+              <li className="name">{props.info.city}</li>
               <li className="day">Last updated</li>
               <li className="time">
                 <FormatedDate date={props.info.date} />

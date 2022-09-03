@@ -5,10 +5,12 @@ import "./main.css";
 
 export default function Main(props) {
   const [weather, setWeather] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeather({
       ready: true,
+      city: response.data.name,
       temperature: response.data.main.temp,
       temperatureMax: response.data.main.temp_max,
       temperatureMin: response.data.main.temp_min,
@@ -22,6 +24,21 @@ export default function Main(props) {
     });
   }
 
+  function search() {
+    const apiKey = "be2b1d571d2242daa7cb5a3c859e71bb";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function changeInfo(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function changeCity(event) {
+    setCity(event.target.value);
+  }
+
   if (weather.ready) {
     return (
       <div className="Main">
@@ -31,9 +48,14 @@ export default function Main(props) {
               <h1>Weather App</h1>
             </div>
             <div className="col-6 search">
-              <form className="row search" id="search-panel">
+              <form
+                onSubmit={changeInfo}
+                className="row search"
+                id="search-panel"
+              >
                 <div className="col-8">
                   <input
+                    onChange={changeCity}
                     type="text"
                     className="form-control"
                     placeholder="enter city..."
@@ -51,14 +73,11 @@ export default function Main(props) {
             </div>
           </div>
         </header>
-        <Weather info={weather} defaultCity="Berlin" />
+        <Weather info={weather} defaultCity={city} />
       </div>
     );
   } else {
-    const apiKey = "be2b1d571d2242daa7cb5a3c859e71bb";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading ...";
   }
 }
