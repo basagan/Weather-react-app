@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import FormatedDate from "./FormatedDate";
+import FormatedTime from "./FormatedTime";
 import axios from "axios";
 import "./main.css";
 import sun from "./image/sun.jpg";
@@ -12,9 +14,13 @@ export default function Main(props) {
       temperature: response.data.main.temp,
       temperatureMax: response.data.main.temp_max,
       temperatureMin: response.data.main.temp_min,
-      time: "Saturday 16:10, Aug 27",
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       icon: " ",
+      timeSunrise: new Date(response.data.sys.sunrise * 1000),
+      timeSunset: new Date(response.data.sys.sunset * 1000),
+      wind: response.data.wind.speed,
+      humidity: response.data.main.humidity,
     });
   }
 
@@ -26,7 +32,9 @@ export default function Main(props) {
             <ul>
               <li className="name">{props.defaultCity}</li>
               <li className="day">Last updated</li>
-              <li className="time">{weather.time}</li>
+              <li className="time">
+                <FormatedDate date={weather.date} />
+              </li>
             </ul>
           </div>
           <div className="col-lg-6 temperature">
@@ -69,6 +77,49 @@ export default function Main(props) {
                 <span id="celsius-fahrenheit">°C</span>
               </li>
             </ul>
+          </div>
+        </div>
+        <div id="additionalinfo">
+          <div className="row">
+            <div className="col-3">
+              <p className="addinfo">
+                wind speed
+                <br />
+                m/s
+              </p>
+              <p className="addinfo-numbers">
+                <span id="windSpeed">{weather.wind}</span>
+              </p>
+            </div>
+            <div className="col-3">
+              <p className="addinfo">
+                sunrise
+                <br />
+                AM
+              </p>
+              <p className="addinfo-numbers" id="sunrise">
+                <FormatedTime time={weather.timeSunrise} />
+              </p>
+            </div>
+            <div className="col-3">
+              <p className="addinfo">
+                sunset
+                <br />
+                PM
+              </p>
+              <p className="addinfo-numbers" id="sunset">
+                <FormatedTime time={weather.timeSunset} />
+              </p>
+            </div>
+            <div className="col-3">
+              <p className="addinfo">
+                humidity
+                <br />%
+              </p>
+              <p className="addinfo-numbers">
+                <span id="humidity">{weather.humidity}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
