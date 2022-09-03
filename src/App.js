@@ -5,17 +5,15 @@ import Main from "./components/Main.js";
 import Additional from "./components/Additional.js";
 import Footer from "./components/Footer.js";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <div className="container">
         <Header />
-        <Main />
+        <Main defaultCity="Tokyo" />
         <Additional />
         <Footer />
       </div>
     </div>
   );
 }
-
-export default App;
