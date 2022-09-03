@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import FormatedDate from "./FormatedDate";
-import FormatedTime from "./FormatedTime";
+import Weather from "./Weather";
 import axios from "axios";
 import "./main.css";
-import sun from "./image/sun.jpg";
 
 export default function Main(props) {
   const [weather, setWeather] = useState({ ready: false });
@@ -26,102 +24,34 @@ export default function Main(props) {
 
   if (weather.ready) {
     return (
-      <div id="main-content">
-        <div className="row city justify-content-md-center">
-          <div className="col-lg-6 city">
-            <ul>
-              <li className="name">{props.defaultCity}</li>
-              <li className="day">Last updated</li>
-              <li className="time">
-                <FormatedDate date={weather.date} />
-              </li>
-            </ul>
-          </div>
-          <div className="col-lg-6 temperature">
-            <ul>
-              <li>
-                <div className="temp d-inline" id="bigTemp">
-                  {weather.temperature}
-                </div>
-                <div className="degrees d-inline">
-                  <a href="/" id="celsius">
-                    °C |
-                  </a>
-                  <a href="/" id="fahrenheit">
-                    °F
-                  </a>
-                </div>
-                <img
-                  src={sun}
-                  alt="Sun"
-                  id="icon"
-                  className="main-emoji img-fluid"
-                  width="50"
-                />
-              </li>
-              <li>
-                <div className="max-min" id="descriptonId">
-                  {weather.description}
-                </div>
-              </li>
-              <li className="max-min">
-                max
-                <p className="temp" id="max">
-                  {weather.temperatureMax}
-                </p>
-                <span id="celsius-fahrenheit">°C |</span>
-                {weather.temperatureMin}
-                <p className="temp" id="min">
-                  28
-                </p>
-                <span id="celsius-fahrenheit">°C</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div id="additionalinfo">
-          <div className="row">
-            <div className="col-3">
-              <p className="addinfo">
-                wind speed
-                <br />
-                m/s
-              </p>
-              <p className="addinfo-numbers">
-                <span id="windSpeed">{weather.wind}</span>
-              </p>
+      <div className="Main">
+        <header className="header">
+          <div className="row justify-content-md-center name-and-search">
+            <div className="col-6 nameapp">
+              <h1>Weather App</h1>
             </div>
-            <div className="col-3">
-              <p className="addinfo">
-                sunrise
-                <br />
-                AM
-              </p>
-              <p className="addinfo-numbers" id="sunrise">
-                <FormatedTime time={weather.timeSunrise} />
-              </p>
-            </div>
-            <div className="col-3">
-              <p className="addinfo">
-                sunset
-                <br />
-                PM
-              </p>
-              <p className="addinfo-numbers" id="sunset">
-                <FormatedTime time={weather.timeSunset} />
-              </p>
-            </div>
-            <div className="col-3">
-              <p className="addinfo">
-                humidity
-                <br />%
-              </p>
-              <p className="addinfo-numbers">
-                <span id="humidity">{weather.humidity}</span>
-              </p>
+            <div className="col-6 search">
+              <form className="row search" id="search-panel">
+                <div className="col-8">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="enter city..."
+                    autoComplete="off"
+                    id="search-city"
+                    autoFocus="on"
+                  />
+                </div>
+                <div className="col-4">
+                  <button type="submit" className="btn btn-dark">
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-        </div>
+        </header>
+        <Weather info={weather} defaultCity="Berlin" />
       </div>
     );
   } else {
