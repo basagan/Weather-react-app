@@ -22,10 +22,8 @@ ul {
   color: #9e9e9e;
 }
 .degrees {
-  font-size: 15px;
+  font-size: 20px;
   text-align: left;
-  position: relative;
-  bottom: 25px;
 }
 .temp {
   display: inline;
@@ -36,7 +34,7 @@ img.main-emoji {
   left: 20px;
 }
 #bigTemp {
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 900;
   line-height: 100px;
 }

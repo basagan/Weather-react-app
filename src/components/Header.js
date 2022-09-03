@@ -17,6 +17,7 @@ export default function Header() {
                 placeholder="enter city..."
                 autoComplete="off"
                 id="search-city"
+                autoFocus="on"
               />
             </div>
             <div className="col-4">
