@@ -1,6 +1,7 @@
 import React from "react";
 import FormatedDate from "./FormatedDate";
 import FormatedTime from "./FormatedTime";
+import WeatherIcon from "./WeatherIcon";
 import "./weather.css";
 
 export default function Weather(props) {
@@ -21,7 +22,7 @@ export default function Weather(props) {
             <ul>
               <li>
                 <div className="temp d-inline" id="bigTemp">
-                  {props.info.temperature}
+                  {Math.round(props.info.temperature)}
                 </div>
                 <div className="degrees d-inline">
                   <a href="/" id="celsius">
@@ -31,13 +32,8 @@ export default function Weather(props) {
                     °F
                   </a>
                 </div>
-                <img
-                  src={props.info.icon}
-                  alt="Sun"
-                  id="icon"
-                  className="main-emoji img-fluid"
-                  width="80"
-                />
+
+                <WeatherIcon code={props.info.icon} />
               </li>
               <li>
                 <div className="max-min" id="descriptonId">

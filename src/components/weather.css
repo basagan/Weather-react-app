@@ -28,10 +28,10 @@ ul {
 .temp {
   display: inline;
 }
-img.main-emoji {
+canvas {
   position: relative;
-  bottom: 15px;
-  left: 15px;
+  bottom: -15px;
+  margin-left: 10px;
 }
 #bigTemp {
   font-size: 50px;

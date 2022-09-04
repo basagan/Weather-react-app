@@ -16,7 +16,7 @@ export default function Main(props) {
       temperatureMin: response.data.main.temp_min,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       timeSunrise: new Date(response.data.sys.sunrise * 1000),
       timeSunset: new Date(response.data.sys.sunset * 1000),
       wind: response.data.wind.speed,
@@ -26,7 +26,7 @@ export default function Main(props) {
 
   function search() {
     const apiKey = "be2b1d571d2242daa7cb5a3c859e71bb";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
