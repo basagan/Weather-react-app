@@ -41,14 +41,14 @@ export default function Weather(props) {
                 </div>
               </li>
               <li className="max-min">
-                max
+                max{" "}
                 <p className="temp" id="max">
-                  {props.info.temperatureMax}
+                  {Math.round(props.info.temperatureMax)}
                 </p>
-                <span id="celsius-fahrenheit">°C |</span>
-                {props.info.temperatureMin}
+                <span id="celsius-fahrenheit">°C | </span>
+                min{" "}
                 <p className="temp" id="min">
-                  28
+                  {Math.round(props.info.temperatureMin)}
                 </p>
                 <span id="celsius-fahrenheit">°C</span>
               </li>
@@ -64,7 +64,7 @@ export default function Weather(props) {
                 m/s
               </p>
               <p className="addinfo-numbers">
-                <span id="windSpeed">{props.info.wind}</span>
+                <span id="windSpeed">{Math.round(props.info.wind)}</span>
               </p>
             </div>
             <div className="col-3">
