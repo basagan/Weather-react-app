@@ -23,7 +23,7 @@ export default function Weather(props) {
             <ul>
               <li>
                 <WeatherTemperature celsius={props.info.temperature} />
-                <WeatherIcon code={props.info.icon} />
+                <WeatherIcon code={props.info.icon} size={70} />
               </li>
               <li>
                 <div className="max-min" id="descriptonId">

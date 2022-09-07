@@ -23,11 +23,11 @@ ul {
 }
 .temp {
   display: inline;
+  padding: 10px;
 }
 canvas {
   position: relative;
   bottom: -15px;
-  margin-left: 20px;
 }
 #descriptonId {
   text-transform: capitalize;
