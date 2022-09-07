@@ -2,6 +2,7 @@ import React from "react";
 import FormatedDate from "./FormatedDate";
 import FormatedTime from "./FormatedTime";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 import "./weather.css";
 
 export default function Weather(props) {
@@ -21,36 +22,13 @@ export default function Weather(props) {
           <div className="col-lg-6 temperature">
             <ul>
               <li>
-                <div className="temp d-inline" id="bigTemp">
-                  {Math.round(props.info.temperature)}
-                </div>
-                <div className="degrees d-inline">
-                  <a href="/" id="celsius">
-                    °C |
-                  </a>
-                  <a href="/" id="fahrenheit">
-                    °F
-                  </a>
-                </div>
-
+                <WeatherTemperature celsius={props.info.temperature} />
                 <WeatherIcon code={props.info.icon} />
               </li>
               <li>
                 <div className="max-min" id="descriptonId">
                   {props.info.description}
                 </div>
-              </li>
-              <li className="max-min">
-                max{" "}
-                <p className="temp" id="max">
-                  {Math.round(props.info.temperatureMax)}
-                </p>
-                <span id="celsius-fahrenheit">°C | </span>
-                min{" "}
-                <p className="temp" id="min">
-                  {Math.round(props.info.temperatureMin)}
-                </p>
-                <span id="celsius-fahrenheit">°C</span>
               </li>
             </ul>
           </div>
