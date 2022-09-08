@@ -22,6 +22,7 @@ export default function Main(props) {
       timeSunset: new Date(response.data.sys.sunset * 1000),
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
+      coordinates: response.data.coord,
     });
   }
 
@@ -75,7 +76,7 @@ export default function Main(props) {
           </div>
         </header>
         <Weather info={weather} defaultCity={city} />
-        <WeatherForecast />
+        <WeatherForecast coordinates={weather.coordinates} />
       </div>
     );
   } else {
