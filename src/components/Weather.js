@@ -3,13 +3,14 @@ import FormatedDate from "./FormatedDate";
 import FormatedTime from "./FormatedTime";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
+import Reminder from "./Reminder";
 import "./weather.css";
 
 export default function Weather(props) {
   return (
     <div className="Weather">
       <div id="main-content">
-        <div className="row city justify-content-md-center">
+        <div className="row city justify-content-md-center mt-3 mb-3">
           <div className="col-lg-6 city">
             <ul>
               <li className="name">{props.info.city}</li>
@@ -33,6 +34,10 @@ export default function Weather(props) {
             </ul>
           </div>
         </div>
+        <Reminder
+          celsius={props.info.temperature}
+          description={props.info.description}
+        />
         <div id="additionalinfo">
           <div className="row">
             <div className="col-3">
